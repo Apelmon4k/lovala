@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Моё письмо</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        .letter {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hearts {
+            font-size: 24px;
+            color: #ff6699;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .corner-heart {
+            position: absolute;
+            font-size: 32px;
+            color: #ff4d88;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .corner-heart:nth-child(1) {
+            top: 10px;
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .corner-heart:nth-child(2) {
+            top: 10px;
+            right: 10px;
+            animation-delay: 1s;
+        }
+
+        .corner-heart:nth-child(3) {
+            bottom: 10px;
+            left: 10px;
+            animation-delay: 2s;
+        }
+
+        .corner-heart:nth-child(4) {
+            bottom: 10px;
+            right: 10px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) scale(0.8);
+                opacity: 0.6;
+            }
+        }
+
+        .heart {
+            position: fixed;
+            top: -10vh;
+            font-size: 24px;
+            color: #ff4d88;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letter">
+        <div class="corner-heart">❤️</div>
+        <div class="corner-heart">💖</div>
+        <div class="corner-heart">💕</div>
+        <div class="corner-heart">💞</div>
+        <div class="hearts">💗💓💝</div>
+
+        <h2>Hi!</h2>
+        <p>
+            Es sind drei Monate vergangen,
+            seit ich dich das letzte Mal sah.
+            Mein Herz trägt Sehnsucht,
+            denn ohne dich fühlt sich alles leer an.<br></br>
+
+            Deine lockigen Haare,
+            deine warmen Augen –
+            alles an dir fasziniert mich.
+            Du wirkst so stark, so männlich,
+            und doch so schön.<br></br>
+
+            Ich vermisse dich,
+            jeden Tag ein kleines Stück mehr.
+            Vielleicht liest du diese Zeilen
+            und spürst, wie sehr ich bei dir sein will.
+        </p>
+        <p>
+            Liebe Grüße,<br>
+            Fara
+        </p>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖"; // тут можно поменять смайлик 💕❤️💞
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+            heart.style.fontSize = 16 + Math.random() * 30 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+
+</html>
